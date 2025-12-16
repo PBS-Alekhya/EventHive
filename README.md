@@ -1,96 +1,157 @@
 # EventHive 🐝
 
-EventHive is a modern, full-stack Event Management Dashboard built with the MERN Stack. It allows organizers to create events, manage ticket approvals, and enables public users to register via unique event links.
+EventHive is a modern, full-stack **Event Management Dashboard** built using the **MERN Stack**. It enables organizers to create and manage events, control ticket approvals, and allows public users to register through unique, shareable event links.
+
+---
 
 ## 🚀 Features
 
-* **Organizer Dashboard:** Create and manage events with ease.
-* **Public Registration:** Shareable links for attendees to register without logging in.
-* **Approval Systems:**
-    * **Auto-Approve:** Instant ticket generation.
-    * **Manual Approve:** Organizers review requests before issuing tickets.
-* **Digital Tickets:** visual ticket generation with unique IDs.
-* **Secure Authentication:** JWT-based login/signup for organizers.
-* **Dark Mode UI:** Sleek, glassmorphism design for a premium feel.
+* **Organizer Dashboard** – Create, update, and manage events seamlessly.
+* **Public Registration** – Share event-specific links for attendee registration without login.
+* **Approval Systems**
+
+  * **Auto-Approve** – Instant ticket generation after registration.
+  * **Manual Approve** – Organizers review and approve requests before issuing tickets.
+* **Digital Tickets** – Visually generated tickets with unique IDs.
+* **Secure Authentication** – JWT-based authentication for organizers.
+* **Dark Mode UI** – Premium glassmorphism design with dark theme.
+
+---
 
 ## 🛠️ Tech Stack
 
-* **Frontend:** React.js, React Router, Axios, CSS (Glassmorphism).
-* **Backend:** Node.js, Express.js.
-* **Database:** MongoDB (Atlas).
-* **Auth:** JSON Web Token (JWT), Bcrypt.
+**Frontend**
+
+* React.js
+* React Router
+* Axios
+* CSS (Glassmorphism UI)
+
+**Backend**
+
+* Node.js
+* Express.js
+
+**Database**
+
+* MongoDB (Atlas)
+
+**Authentication & Security**
+
+* JSON Web Tokens (JWT)
+* Bcrypt
+
+---
 
 ## 📦 Prerequisites
 
 Before running the project, ensure you have the following installed:
-* [Node.js](https://nodejs.org/) (v14 or higher)
-* [MongoDB Atlas](https://www.mongodb.com/atlas/database) Account (for the database URI)
+
+* **Node.js** (v14 or higher)
+* **MongoDB Atlas** account (or local MongoDB)
+* **Git**
+
+---
 
 ## 🔧 Installation & Setup
 
-Follow these steps to get the project running on your local machine.
+Follow the steps below to run EventHive locally.
 
-Prerequisites
-Node.js installed.
+### 1️⃣ Clone the Repository
 
-MongoDB Atlas account (or local MongoDB installed).
-
-Git installed.
-
-1. Clone the Repository
-Bash
-
-git clone [https://github.com/YOUR_GITHUB_USERNAME/event-hive.git](https://github.com/YOUR_GITHUB_USERNAME/event-hive.git)
+```bash
+git clone https://github.com/PBS-Alekhya/EventHive.git
 cd event-hive
-2. Backend Setup
-Navigate to the backend folder:
+```
 
+---
 
+### 2️⃣ Backend Setup
+
+Navigate to the backend directory:
+
+```bash
 cd backend
+```
+
 Install dependencies:
 
-
-
+```bash
 npm install
-Create a .env file in the backend folder and add your credentials:
+```
 
-Code snippet
+Create a `.env` file inside the **backend** folder and add the following:
 
+```env
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_random_string
+```
 
-Start the server:
+Start the backend server:
 
+```bash
 node server.js
-You should see: Server running on port 5000 and MongoDB Connected.
+```
 
-3. Frontend Setup
-Open a new terminal window and navigate to the frontend folder:
+✅ Expected output:
 
+```
+Server running on port 5000
+MongoDB Connected
+```
+
+---
+
+### 3️⃣ Frontend Setup
+
+Open a new terminal and navigate to the frontend directory:
+
+```bash
 cd frontend
+```
 
 Install dependencies:
 
+```bash
 npm install
+```
 
-Start the React app:
+Start the React application:
 
+```bash
 npm start
-The app will open automatically at http://localhost:3000.
+```
 
-📖 Usage Guide
+The app will open automatically at:
 
-Sign Up: Create a new organizer account.
+👉 **[http://localhost:3000](http://localhost:3000)**
 
-Dashboard: Click "+ Create New Event".
+---
 
-Choose Mode:
+## 📖 Usage Guide
 
-Select "Auto" if you want tickets generated instantly.
+1. **Sign Up** – Create a new organizer account.
+2. **Dashboard** – Click **"+ Create New Event"**.
+3. **Choose Approval Mode**
 
-Select "Manual" if you want to approve attendees yourself.
+   * **Auto Mode** – Tickets are generated instantly.
+   * **Manual Mode** – Organizer approves registrations manually.
+4. **Public Event Link**
 
-Public Link: Click the "Public Page" button on an event card. Copy the URL and open it in a new browser/incognito window to test registration.
+   * Click **"Public Page"** on the event card.
+   * Share or open the link in an incognito window to test registration.
+5. **Manual Approval Flow**
 
-Approve (Manual Mode): Go back to Dashboard -> Click "View Requests" -> Approve or Reject candidates.
+   * Dashboard → **View Requests**
+   * Approve or Reject attendees
+
+---
+
+## 📌 Notes
+
+* Public users do **not** need to log in to register.
+* Only organizers require authentication.
+* Each ticket includes a **unique ID** for verification.
+
+
