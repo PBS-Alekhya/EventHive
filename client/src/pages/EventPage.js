@@ -91,83 +91,101 @@ const EventPage = () => {
 
         
         <div className="register-section">
-          {ticket ? (
-            <div className="ticket-container">
-              {ticket.status === "Approved" ? (
-                <>
-                  <h2 style={{color: '#4ade80'}}>Registration Successful!</h2>
-                  <div className="ticket-visual">
-                    <div className="ticket-header">
-                      <h3>EVENT TICKET</h3>
-                    </div>
-                    <p><strong>Attendee:</strong> {ticket.userName}</p>
-                    <div className="ticket-id">Ticket ID: {ticket.ticketId}</div>
-                    <div className="ticket-status status-approved">
-                      ● Approved
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <div className="pending-box">
-                  <h3>⏳ Approval Pending</h3>
-                  <p style={{margin: '10px 0', fontSize: '0.9rem'}}>
-                    Your request has been sent to the organizer. 
-                    Please wait for them to approve your seat.
-                  </p>
-                  <div className="ticket-status status-pending">
-                    ● Status: Pending
-                  </div>
-                  <small style={{display:'block', marginTop:'10px', color:'white'}}>
-                    Refresh this page later to check status.
-                  </small>
-                </div>
-              )}
-              
-              {/* ---  Register Another Person --- */}
-              <button 
-                onClick={handleReset}
-                style={{
-                  marginTop: '20px',
-                  background: 'transparent',
-                  border: '1px solid rgba(255,255,255,0.3)',
-                  color: '#cbd5e1',
-                  padding: '10px 20px',
-                  borderRadius: '8px',
-                  cursor: 'pointer',
-                  fontSize: '0.9rem'
-                }}
-              >
-                ← Register Another Person
-              </button>
-
+  {ticket ? (
+    <div className="ticket-container">
+      
+      {/*  CASE 1: APPROVED */}
+      {ticket.status === "Approved" && (
+        <>
+          <h2 style={{color: '#4ade80'}}>Registration Successful!</h2>
+          <div className="ticket-visual">
+            <div className="ticket-header">
+              <h3>EVENT TICKET</h3>
             </div>
-          ) : (
-            <>
-              <h3 className="reg-title">Reserve your spot</h3>
-              <form onSubmit={handleRegister}>
-                <input
-                  type="text"
-                  className="public-input"
-                  placeholder="Your Full Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                />
-                <input
-                  type="email"
-                  className="public-input"
-                  placeholder="Your Email Address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-                <button type="submit" className="btn-get-ticket">
-                  Get Ticket
-                </button>
-              </form>
-            </>
-          )}
+            <p><strong>Attendee:</strong> {ticket.userName}</p>
+            <div className="ticket-id">Ticket ID: {ticket.ticketId}</div>
+            <div className="ticket-status status-approved">
+              ● Approved
+            </div>
+          </div>
+        </>
+      )}
+
+      {/*  CASE 2: REJECTED  */}
+      {ticket.status === "Rejected" && (
+        <div className="pending-box" style={{border: '1px solid #ff4d4d', background: 'rgba(255, 77, 77, 0.1)'}}>
+          <h3 style={{color: '#ff4d4d'}}> Request Rejected</h3>
+          <p style={{margin: '10px 0', fontSize: '0.9rem'}}>
+            The organizer has declined your registration request for this event.
+          </p>
+          <div className="ticket-status" style={{color: '#ff4d4d', background: 'rgba(255,0,0,0.2)'}}>
+            ● Status: Rejected
+          </div>
         </div>
+      )}
+
+      {/*  CASE 3: PENDING (Default) */}
+      {ticket.status !== "Approved" && ticket.status !== "Rejected" && (
+        <div className="pending-box">
+          <h3>⏳ Approval Pending</h3>
+          <p style={{margin: '10px 0', fontSize: '0.9rem'}}>
+            Your request has been sent to the organizer. 
+            Please wait for them to approve your seat.
+          </p>
+          <div className="ticket-status status-pending">
+            ● Status: Pending
+          </div>
+          <small style={{display:'block', marginTop:'10px', color:'white'}}>
+            Refresh this page later to check status.
+          </small>
+        </div>
+      )}
+      
+      {/* ---  Register Another Person --- */}
+      <button 
+        onClick={handleReset}
+        style={{
+          marginTop: '20px',
+          background: 'transparent',
+          border: '1px solid rgba(255,255,255,0.3)',
+          color: '#cbd5e1',
+          padding: '10px 20px',
+          borderRadius: '8px',
+          cursor: 'pointer',
+          fontSize: '0.9rem'
+        }}
+      >
+        ← Register Another Person
+      </button>
+
+    </div>
+  ) : (
+    <>
+      <h3 className="reg-title">Reserve your spot</h3>
+      <form onSubmit={handleRegister}>
+        <input
+          type="text"
+          className="public-input"
+          placeholder="Your Full Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <input
+          type="email"
+          className="public-input"
+          placeholder="Your Email Address"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <button type="submit" className="btn-get-ticket">
+          Get Ticket
+        </button>
+      </form>
+    </>
+  )}
+</div>
 
       </div>
     </div>
